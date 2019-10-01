@@ -6,7 +6,17 @@
 {% from "textarea/macro.njk" import govukTextarea %}
 {% from "details/macro.njk" import govukDetails %}
 
+{% block pageTitle %}
+  Equality and diversity questions
+{% endblock %}
+
 {% block beforeContent %}
+  {{ govukPhaseBanner({
+  tag: {
+    text: "beta"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
   {{ govukBackLink({
     text: "Back"
   }) }}
@@ -16,10 +26,10 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% if data['respondent'] == 'true' %} 
-        <form action="./disability?respondent=true" method="post" novalidate>  
+      {% if data['appointee'] == 'true' %} 
+        <form action="./disability?appointee=true" method="post" novalidate>  
       {% else %}
-        <form action="./disability?respondent=false" method="post" novalidate>
+        <form action="./disability?appointee=false" method="post" novalidate>
       {% endif %}
 
 
@@ -33,14 +43,17 @@
           }
         }) }}
         {% endset -%}
-    
-
         
-        <h1 class="govuk-heading-l">What is your religion?</h1>
-           
         {{ govukRadios({
           idPrefix: "religion",
           name: "religion",
+          fieldset: {
+            legend: {
+              text: "What is your religion?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
           items: [
             {
               value: "no-religion",
@@ -86,18 +99,16 @@
             }
           ]
         }) }} 
-
-        {{ govukButton({
-          text: "Continue to next question"
-        }) }}
-
         <br>
 
-        {% if data['respondent'] == 'true' %} 
-            <a href="https://div-pcq-prototype.herokuapp.com/aos/check-your-answers" class="govuk-link govuk-!-font-size-19">Return to petition response</a>
-        {% else %}
-            <a href="https://div-pcq-prototype.herokuapp.com/check-your-answers" class="govuk-link govuk-!-font-size-19">Return to petition</a>
-        {% endif %}
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+    <br>
+    {{ govukDetails({
+          summaryText: "Why we are asking this question",
+          text: "This information helps us check that we’re treating people equally and fairly. It helps us to meet our commitment to equality (under the Equality Act 2010)."
+    }) }}
 
       </form>
     </div>

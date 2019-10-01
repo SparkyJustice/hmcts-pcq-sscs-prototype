@@ -1,15 +1,21 @@
 {% extends "layout.html" %}
 
-{% block pageTitle %}
-  Divorce Prototype
-{% endblock %}
-
 {% from "back-link/macro.njk" import govukBackLink %}
 {% from "radios/macro.njk" import govukRadios %}
 {% from "button/macro.njk" import govukButton %}
 {% from "details/macro.njk" import govukDetails %}
 
+{% block pageTitle %}
+  Equality and diversity questions
+{% endblock %}
+
 {% block beforeContent %}
+  {{ govukPhaseBanner({
+  tag: {
+    text: "beta"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
   {{ govukBackLink({
     text: "Back"
   }) }}
@@ -19,18 +25,22 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% if data['respondent'] == 'true' %} 
-        <form action="./thank-you?respondent=true&" method="post" novalidate>  
+      {% if data['appointee'] == 'true' %} 
+        <form action="./thank-you?appointee=true&" method="post" novalidate>  
       {% else %}
-        <form action="./thank-you?respondent=false&" method="post" novalidate>
+        <form action="./thank-you?appointee=false&" method="post" novalidate>
       {% endif %}
-
-        
-        <h1 class="govuk-heading-l">Are you pregnant or have you been pregnant in the last year?</h1>
 
         {{ govukRadios({
           idPrefix: "are-you-pregnant",
           name: "are-you-pregnant",
+          fieldset: {
+            legend: {
+              text: "Are you pregnant or have you been pregnant in the last year?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
           items: [
             {
               value: "yes",
@@ -49,17 +59,16 @@
             }
           ]
         }) }}
+        <br>
 
         {{ govukButton({
-           text: "Submit questions"
+           text: "Continue"
         }) }}
-            <br>
-            
-        {% if data['respondent'] == 'true' %} 
-            <a href="https://div-pcq-prototype.herokuapp.com/aos/check-your-answers" class="govuk-link govuk-!-font-size-19">Return to petition response</a>
-        {% else %}
-            <a href="https://div-pcq-prototype.herokuapp.com/check-your-answers" class="govuk-link govuk-!-font-size-19">Return to petition</a>
-        {% endif %}
+    <br>
+    {{ govukDetails({
+          summaryText: "Why we are asking this question",
+          text: "This information helps us check that we’re treating people equally and fairly. It helps us to meet our commitment to equality (under the Equality Act 2010)."
+    }) }}
 
       </form>
     </div>
