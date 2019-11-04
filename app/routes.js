@@ -91,11 +91,11 @@ if (ethnicGroup == "Prefer not to say") {
     res.redirect('religion?appointee=false&')
   } else if (ethnicGroup == "White") {
     res.redirect('/pcq-v1/ethnic-group/ethnicity-white?appointee=false&')
-  } else if (ethnicGroup == "Mixed or multiple ethnic groups") {
+  } else if (ethnicGroup == "Mixed or Multiple ethnic groups") {
     res.redirect('/pcq-v1/ethnic-group/ethnicity-mixed?appointee=false&')
   } else if (ethnicGroup == "Asian or Asian British") {
     res.redirect('/pcq-v1/ethnic-group/ethnicity-asian?appointee=false&')
-  } else if (ethnicGroup == "Black, African, Black British or Caribbean") {
+  } else if (ethnicGroup == "Black, African, Caribbean or Black British") {
     res.redirect('/pcq-v1/ethnic-group/ethnicity-black?appointee=false&')
   } else if (ethnicGroup == "Another ethnic group") {
     res.redirect('/pcq-v1/ethnic-group/ethnicity-another?appointee=false&')
