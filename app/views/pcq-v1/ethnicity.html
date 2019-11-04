@@ -42,8 +42,28 @@
             }
           },
         items: [
+         {
+              value: "white",
+              text: "White",
+              label: {
+                classes: 'govuk-label--s'
+              },
+              hint: {
+                text: 'Includes any White background'
+              }
+            },
           {
-              value: "Asian or Asian British",
+              value: "mixed-or-multiple-ethnic-groups",
+              text: "Mixed or multiple ethnic groups",
+              label: {
+                classes: 'govuk-label--s'
+              },
+              hint: {
+                text: 'Includes any Mixed background'
+              }
+            },
+          {
+              value: "asian-or-asian-british",
               text: "Asian or Asian British",
               label: {
                 classes: 'govuk-label--s'
@@ -53,8 +73,8 @@
               }
             },
             {
-              value: "Black, African, Black British or Caribbean",
-              text: "Black, African, Black British or Caribbean",
+              value: "black-african-black-british-or-caribbean",
+              text: "Black, African, Caribbean or Black British",
               label: {
                 classes: 'govuk-label--s'
               },
@@ -62,28 +82,8 @@
                 text: 'Includes any Black background'
               }
             },
-             {
-              value: "Mixed or multiple ethnic groups",
-              text: "Mixed or multiple ethnic groups",
-              label: {
-                classes: 'govuk-label--s'
-              },
-              hint: {
-                text: 'Includes any Mixed background'
-              }
-            },
             {
-              value: "White",
-              text: "White",
-              label: {
-                classes: 'govuk-label--s'
-              },
-              hint: {
-                text: 'Includes any White background'
-              }
-            },
-            {
-              value: "Another ethnic group",
+              value: "another-ethnic-group",
               text: "Another ethnic group",
               label: {
                 classes: 'govuk-label--s'
@@ -96,7 +96,7 @@
               divider: "or"
             },
             {
-              value: "Prefer not to say",
+              value: "prefer-not-to-say",
               text: "Prefer not to say",
               label: {
                 classes: 'govuk-label'
