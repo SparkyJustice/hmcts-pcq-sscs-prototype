@@ -1,35 +1,13 @@
 {% extends "layout.html" %}
 
-{% from "back-link/macro.njk" import govukBackLink %}
-{% from "radios/macro.njk" import govukRadios %}
-{% from "button/macro.njk" import govukButton %}
-{% from "details/macro.njk" import govukDetails %}
-
 {% block pageTitle %}
-  Equality and diversity questions
-{% endblock %}
-
-{% block beforeContent %}
-  {{ govukPhaseBanner({
-  tag: {
-    text: "beta"
-  },
-  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-  }) }}
-  {{ govukBackLink({
-    text: "Back"
-  }) }}
+  Equality questions - ethnicity
 {% endblock %}
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      {% if data['appointee'] == 'true' %} 
-        <form action="/pcq-v1/appointee-ethnicity-answer" method="post" novalidate>
-      {% else %}
-        <form action="/pcq-v1/applicant-ethnicity-answer" method="post" novalidate>
-
-      {% endif %}
+      <form action="/ethnicity-next-q" method="post" novalidate>
 
       {{ govukRadios({
         idPrefix: "ethnic-group",
@@ -41,9 +19,9 @@
               classes: "govuk-fieldset__legend--l"
             }
           },
-        items: [
-         {
-              value: "White",
+        items: [ 
+          {
+              value: "white",
               text: "White",
               label: {
                 classes: 'govuk-label--s'
@@ -53,8 +31,8 @@
               }
             },
           {
-              value: "Mixed or Multiple ethnic groups",
-              text: "Mixed or Multiple ethnic groups",
+              value: "mixed-or-multiple-ethnic-groups",
+              text: "Mixed or multiple ethnic groups",
               label: {
                 classes: 'govuk-label--s'
               },
@@ -63,7 +41,7 @@
               }
             },
           {
-              value: "Asian or Asian British",
+              value: "asian-or-asian-british",
               text: "Asian or Asian British",
               label: {
                 classes: 'govuk-label--s'
@@ -73,7 +51,7 @@
               }
             },
             {
-              value: "Black, African, Caribbean or Black British",
+              value: "black-african-black-british-or-caribbean",
               text: "Black, African, Caribbean or Black British",
               label: {
                 classes: 'govuk-label--s'
@@ -83,7 +61,7 @@
               }
             },
             {
-              value: "Another ethnic group",
+              value: "another-ethnic-group",
               text: "Another ethnic group",
               label: {
                 classes: 'govuk-label--s'
@@ -96,7 +74,7 @@
               divider: "or"
             },
             {
-              value: "Prefer not to say",
+              value: "prefer-not-to-say",
               text: "Prefer not to say",
               label: {
                 classes: 'govuk-label'

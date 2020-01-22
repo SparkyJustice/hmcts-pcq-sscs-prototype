@@ -1,36 +1,14 @@
 {% extends "layout.html" %}
 
-{% from "back-link/macro.njk" import govukBackLink %}
-{% from "radios/macro.njk" import govukRadios %}
-{% from "button/macro.njk" import govukButton %}
-{% from "details/macro.njk" import govukDetails %}
-
 {% block pageTitle %}
-  Equality and diversity questions
-{% endblock %}
-
-{% block beforeContent %}
-  {{ govukPhaseBanner({
-  tag: {
-    text: "beta"
-  },
-  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-  }) }}
-  {{ govukBackLink({
-    text: "Back"
-  }) }}
+  Equality questions - gender
 {% endblock %}
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-    {% if data['appointee'] == 'true' %} 
-        <form action="./sexual-orientation?appointee=true" method="post" novalidate>  
-      {% else %}
-        <form action="./sexual-orientation?appointee=false" method="post" novalidate>
-      {% endif %}
-
+      <form action="/gender-next-q" method="post" novalidate>
         
         {% set otherOtherHtml %}
         {{ govukInput({
@@ -38,6 +16,7 @@
           name: "gender-other",
           classes: "govuk-!-width-two-thirds",
           label: {
+            value: "your-gender",
             text: "Please enter your gender"
           }
         }) }}

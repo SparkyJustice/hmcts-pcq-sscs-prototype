@@ -1,25 +1,7 @@
 {% extends "layout.html" %}
 
-{% from "back-link/macro.njk" import govukBackLink %}
-{% from "details/macro.njk" import govukDetails %}
-{% from "input/macro.njk" import govukInput %}
-{% from "fieldset/macro.njk" import govukFieldset %}
-{% from "radios/macro.njk" import govukRadios %}
-
 {% block pageTitle %}
-  Equality and diversity questions
-{% endblock %}
-
-{% block beforeContent %}
-  {{ govukPhaseBanner({
-    tag: {
-      text: "beta"
-    },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-  }) }}
-  {{ govukBackLink({
-    text: "Back"
-  }) }}
+  Equality questions - ethnicity other
 {% endblock %}
 
 {% block content %}
@@ -28,13 +10,7 @@
     <div class="govuk-grid-column-two-thirds">
 
 
-      {% if data['appointee'] == 'true' %} 
-        <form action="../religion?appointee=true&" method="post" novalidate>  
-      {% else %}
-        <form action="../religion?appointee=false&" method="post" novalidate>
-      {% endif %}  
-
-
+      <form action="../religion" method="post" novalidate>  
 
       {% set otherOtherHtml %}
         {{ govukInput({
@@ -42,6 +18,7 @@
           name: "ethnicity-mixed-other",
           classes: "govuk-!-width-two-thirds",
           label: {
+            value: "your-ethnic-background",
             text: "Your ethnic background (optional)"
           }
         }) }}
@@ -63,7 +40,7 @@
             text: "Arab"
           },
           {
-            value: "another-ethnic-background",
+              value: "another-ethnic-background",
             text: "Another ethnic background",
             conditional: {
               html: otherOtherHtml
