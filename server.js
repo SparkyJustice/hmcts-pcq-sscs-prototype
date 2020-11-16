@@ -64,12 +64,11 @@ var useHttps = process.env.USE_HTTPS || config.useHttps
 var gtmId = process.env.GOOGLE_TAG_MANAGER_TRACKING_ID
 
 
-//JHS 091019 set up user defined configuration variables in the following order heroku config variables, the .env-variables file and config.js 
-
-var serviceReturnUrlA = process.env.SERVICE_RETURN_URL_A || config.serviceReturnUrlA
-var serviceReturnUrlB = process.env.SERVICE_RETURN_URL_B || config.serviceReturnUrlB
-var serviceUserTypeA = process.env.SERVICE_USER_TYPE_A || config.serviceUserTypeA
-var serviceUserTypeB = process.env.SERVICE_USER_TYPE_B || config.serviceUserTypeB
+//JHS 091019 set up user defined configuration variables in the following order heroku config variables, the .env-variables file
+var serviceReturnUrlA = process.env.SERVICE_RETURN_URL_A
+var serviceReturnUrlB = process.env.SERVICE_RETURN_URL_B
+var serviceUserTypeA = process.env.SERVICE_USER_TYPE_A
+var serviceUserTypeB = process.env.SERVICE_USER_TYPE_B
 
 
 // JHS 131019 make questionOrder global so can access it in routes

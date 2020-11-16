@@ -1,56 +1,46 @@
 {% extends "layout.html" %}
+<!-- JHS 091019 included this call because doesn't work from the layout.html -->
 {% from "govuk/components/date-input/macro.njk" import govukDateInput %}
 
 {% block pageTitle %}
-  Equality questions - age
+  Equality questions - Date of Birth
 {% endblock %}
-
-{% set inputDateOfBirth %}
-    {{ govukDateInput({
-      id: "dob",
-      namePrefix: "dob",
-      hint: {
-        text: "For example, 31 03 1980"
-        }
-    }) }}
-{% endset %}
-
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form action="/age-next-q" method="post" novalidate>  
-
-      {{ govukRadios({
-        idPrefix: "date-of-birth",
-        name: "date-of-birth",
-        fieldset: {
+      <form action="/date-of-birth-next-q" method="post" novalidate>
+        {{ govukDateInput({
+          id: "dob",
+          namePrefix: "dob",
+          fieldset: {
             legend: {
               text: "What is your date of birth?",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--l"
             }
-        },
-        items: [
-            {              
-              checked: "checked",
-              value: "enter-your-date-of-birth",
-              text: "Enter your date of birth",
-              conditional: {
-              html: inputDateOfBirth}
+          },
+          hint: {
+            text: "For example, 31 3 1980"
+          },
+          items: [
+            {
+              name: "day",
+              classes: "govuk-input--width-2",
+              autocomplete: "bday-day"
             },
             {
-             divider: "or"
+              name: "month",
+              classes: "govuk-input--width-2",
+              autocomplete: "bday-month"
             },
-
             {
-              value: "prefer-not-to-say",
-              text: "Prefer not to say"
+              name: "year",
+              classes: "govuk-input--width-4",
+              autocomplete: "bday-year"
             }
           ]
         }) }}
-
-        <br>
 
         {{ govukButton({
            text: "Continue"
